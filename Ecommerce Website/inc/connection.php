@@ -7,6 +7,8 @@ if (!$connection) {
     die(mysqli_error($connection));
 }
 
+$database = mysqli_select_db($connection, DB_DATABASE);
+
 VerifyCategoryTable($connection, DB_DATABASE);
 VerifyBrandTable($connection, DB_DATABASE);
 

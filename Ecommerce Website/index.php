@@ -1,5 +1,5 @@
 <?php
-include('../inc/connection.php');
+include('./inc/connection.php');
 ?>
 
 <!doctype html>
