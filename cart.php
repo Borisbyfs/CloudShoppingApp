@@ -11,7 +11,7 @@ updateCart();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ecommerce Website - Cart Details</title>
+    <title>Slimerch Ecommerce - Cart Details</title>
     <!-- BootStrap CSS Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- Font Awesome Link -->
@@ -79,7 +79,7 @@ updateCart();
 </nav>
 
 <div class="bg-light">
-    <h3 class="text-center">Store Page</h3>
+    <h3 class="text-center">Slimerch Store Page</h3>
     <p class="text-center"> Cart Details</p>
 </div>
 
