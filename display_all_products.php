@@ -1,7 +1,6 @@
 <?php
 include('./includes/connection.php');
 include('./functions/common.php');
-
 cart();
 ?>
 
@@ -10,7 +9,7 @@ cart();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ecommerce Website</title>
+    <title>Ecommerce Website - All Products</title>
     <!-- BootStrap CSS Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- Font Awesome Link -->
@@ -36,20 +35,20 @@ cart();
           <a class="nav-link" href="display_all_products.php">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./user/user_registration.php">Register</a>
+          <a class="nav-link" href="user/user_registration.php">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="cart.php"><i class="fa-sharp fa-solid fa-cart-shopping"></i>
-        <?php
-            getNumberOfCartItems();
-        ?>
-        </a>
+            <?php
+                getNumberOfCartItems();
+            ?>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Total Price:$<?php echo getTotalPrice(); ?>/-</a>
+            <a class="nav-link" href="#">Total Price:$<?php echo getTotalPrice(); ?>/-</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -62,7 +61,7 @@ cart();
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
 <ul class="navbar-nav me-auto">
-    <li class="nav-item">
+  <li class="nav-item">
       <?php
         if (!isset($_SESSION['username'])){
           echo "<a class='nav-link' href='#'>Welcome Guest</a>";
@@ -86,7 +85,7 @@ cart();
 
 <div class="bg-light">
     <h3 class="text-center">Store Page</h3>
-    <p class="text-center"> WEEEE Welcome to the store!</p>
+    <p class="text-center">All Products</p>
 </div>
 
 <div class="row">
@@ -94,7 +93,7 @@ cart();
         <!-- products -->
         <div class="row">
             <?php
-                getProducts();
+                getProducts(true);
             ?>
         </div>
     </div>

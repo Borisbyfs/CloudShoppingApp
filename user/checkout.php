@@ -1,8 +1,6 @@
 <?php
-include('./includes/connection.php');
-include('./functions/common.php');
-
-cart();
+include_once('../includes/connection.php');
+include_once('../functions/common.php');
 ?>
 
 <!doctype html>
@@ -30,19 +28,19 @@ cart();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+          <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="display_all_products.php">Products</a>
+          <a class="nav-link" href="../display_all_products.php">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./user/user_registration.php">Register</a>
+          <a class="nav-link" href="user_registration.php">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="cart.php"><i class="fa-sharp fa-solid fa-cart-shopping"></i>
+          <a class="nav-link" href="../cart.php"><i class="fa-sharp fa-solid fa-cart-shopping"></i>
         <?php
             getNumberOfCartItems();
         ?>
@@ -62,7 +60,7 @@ cart();
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
 <ul class="navbar-nav me-auto">
-    <li class="nav-item">
+  <li class="nav-item">
       <?php
         if (!isset($_SESSION['username'])){
           echo "<a class='nav-link' href='#'>Welcome Guest</a>";
@@ -85,39 +83,24 @@ cart();
 </nav>
 
 <div class="bg-light">
-    <h3 class="text-center">Store Page</h3>
-    <p class="text-center"> WEEEE Welcome to the store!</p>
+    <h3 class="text-center">Checkout</h3>
+    <p class="text-center">Choose your payment method</p>
 </div>
 
-<div class="row">
-    <div class="col-md-10">
-        <!-- products -->
+<div class="row px-1">
+    <div class="class col-md-12">
         <div class="row">
             <?php
-                getProducts();
+                if (!isset($_SESSION['username'])){
+                    include('user_login.php');
+                } else {
+                    include('../payment.php');
+                }
             ?>
         </div>
     </div>
-    <div class="col-md-2 bg-secondary p-0">
-        <!-- sidenav -->
-        <ul class="navbar-nav me-auto text-center">
-            <li class="nav-item bg-info">
-                <a href="#" class="nav-link text-light"><h4>Brands</h4></a>
-            </li>
-            <?php
-                getBrands();
-            ?>
-        </ul>
-        <ul class="navbar-nav me-auto text-center">
-            <li class="nav-item bg-info">
-                <a href="#" class="nav-link text-light"><h4>Categories</h4></a>
-            </li>
-            <?php
-                getCategories();
-            ?>
-        </ul>
-    </div>
 </div>
+
 
 <div class="bg-info p-3 text-center">
     <p>Copyright 2023</p>

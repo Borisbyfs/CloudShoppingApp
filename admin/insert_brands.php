@@ -1,5 +1,5 @@
 <?php
-include('../inc/connection.php');
+include('../includes/connection.php');
 if(isset($_POST['insert_brand'])){
     $brand_title = $_POST['brand_title'];
 
@@ -27,7 +27,7 @@ if(isset($_POST['insert_brand'])){
         </span>
         <input type="text" class="form-control" name="brand_title" placeholder="Insert Brands" aria-label="Brands" aria-describedby="basic-addon1">
     </div>
-    <div class="input-group w-10 mb-2 m-auto">
+    <div class="input-group w-10 mb-2 m-auto">  
         <input type="submit" class="bg-info border-0 p-2 my-3" name="insert_brand" value="Insert">
     </div>
 </form>

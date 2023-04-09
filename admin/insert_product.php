@@ -1,3 +1,30 @@
+<?php
+include('../includes/connection.php');
+if (isset($_POST['insert_product'])){
+    $product_name = $_POST['product_title'];
+    $product_description = $_POST['product_description'];
+    $product_keyword = $_POST['product_keyword'];
+    $product_category = $_POST['product_category'];
+    $product_brand = $_POST['product_brand'];
+    $product_image = $_FILES['product_image']['name'];
+    $product_image_tmp = $_FILES['product_image']['tmp_name'];
+    $product_price = $_POST['product_price'];
+    $product_status = "true";
+
+    if ($product_name=='' or $product_description=='' or $product_keyword=='' or $product_category=='' or $product_brand=='' or $product_image =='' or $product_price ==''){
+        echo "<script>alert('Required field is empty!')</script>";
+        exit();
+    } else {
+        move_uploaded_file($product_image_tmp, "./product_images/$product_image");
+        $insert_query = "insert into `product` (Name,Description,Keywords,CategoryId,BrandId,Image,Price,Date,Status) values ('$product_name', '$product_description', '$product_keyword', $product_category, $product_brand, '$product_image', $product_price, NOW(), '$product_status')";
+        $insert_result = mysqli_query($connection, $insert_query);
+        if ($insert_result){
+            echo "<script>alert('Product successfully added!')</script>";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +37,7 @@
     <!-- Font Awesome Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS Style -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body class="bg-light">
     <div class="container mt-3">
@@ -36,12 +63,30 @@
             <div class="form-outline mb-4 w-50 m-auto">
                 <select name="product_category" id="product_category" class="form-select">
                     <option value="">Select Category</option>
+                    <?php
+                        $select_query = "select * from `category`";
+                        $select_result = mysqli_query($connection, $select_query);
+                        while($row = mysqli_fetch_assoc($select_result)){
+                            $category_name = $row['Name'];
+                            $category_id = $row['Id'];
+                            echo " <option value='$category_id'>$category_name</option>";
+                        }
+                    ?>
                 </select>
             </div>
             <!-- Brands -->
             <div class="form-outline mb-4 w-50 m-auto">
                 <select name="product_brand" id="product_brand" class="form-select">
                     <option value="">Select Brand</option>
+                    <?php
+                        $select_query = "select * from `brand`";
+                        $select_result = mysqli_query($connection, $select_query);
+                        while($row = mysqli_fetch_assoc($select_result)){
+                            $brand_name = $row['Name'];
+                            $brand_id = $row['Id'];
+                            echo " <option value='$brand_id'>$brand_name</option>";
+                        }
+                    ?>
                 </select>
             </div>
             <!-- Image -->
@@ -52,7 +97,7 @@
             <!-- Price -->
             <div class="form-outline mb-4 w-50 m-auto">
                 <label for="product_price" class="form-label">Product Price</label>
-                <input type="text" name="product_price", id="product_price" class="form-control" placeholder="Enter product price" autocomplete="off" required="required">
+                <input type="number" name="product_price", id="product_price" class="form-control" placeholder="Enter product price" autocomplete="off" required="required">
             </div>
             <!-- Submit -->
             <div class="form-outline mb-4 w-50 m-auto">
