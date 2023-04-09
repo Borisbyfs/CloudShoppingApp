@@ -31,7 +31,7 @@ function ClearAllTables($connection, $dbName)
         echo ("<p>Error dropping brand table.</p>");
 
 
-    $query = "DROP TABLE user";
+    $query = "DROP TABLE usertable";
     if (!mysqli_query($connection, $query))
         echo ("<p>Error dropping user table.</p>");
 
