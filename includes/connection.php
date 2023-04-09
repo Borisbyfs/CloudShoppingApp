@@ -46,17 +46,17 @@ Name VARCHAR(100)
 function VerifyUserTable($connection, $dbName)
 {
     if (!TableExists("usertable", $connection, $dbName)) {
-        $query = "CREATE TABLE usertable (
-        Id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        Address VARCHAR(100),
-        Email VARCHAR(100),
-        Image VARCHAR(100),
-        Address VARCHAR(100),
-        IpAddress VARCHAR(100),
-        Mobile VARCHAR(100),
-        Password (VARCHAR(100),
-        Username (VARCHAR(100)
-        )";
+        $query = "CREATE TABLE usertable 
+(Address VARCHAR(100),
+Email VARCHAR(100),
+Id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Image VARCHAR(100),
+Address VARCHAR(100),
+IpAddress VARCHAR(100),
+Mobile VARCHAR(100),
+Password (VARCHAR(100),
+Username (VARCHAR(100)
+)";
 
         if (!mysqli_query($connection, $query))
             echo ("<p>Error creating table.</p>");
