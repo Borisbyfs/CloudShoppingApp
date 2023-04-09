@@ -56,7 +56,7 @@ include('./inc/connection.php');
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
 <ul class="navbar-nav me-auto">
     <li class="nav-item">
-        <a class="nav-link" href="#">Welcome Guest</a>
+        <a class="nav-link" href="#">Welcome BOBO</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#">Login</a>
