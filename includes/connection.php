@@ -11,6 +11,7 @@ $database = mysqli_select_db($connection, DB_DATABASE);
 
 VerifyCategoryTable($connection, DB_DATABASE);
 VerifyBrandTable($connection, DB_DATABASE);
+VerifyUserTable($connection, DB_DATABASE);
 
 ?>
 
@@ -36,6 +37,26 @@ function VerifyBrandTable($connection, $dbName)
 Id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 Name VARCHAR(100)
 )";
+
+        if (!mysqli_query($connection, $query))
+            echo ("<p>Error creating table.</p>");
+    }
+}
+
+function VerifyUserTable($connection, $dbName)
+{
+    if (!TableExists("usertable", $connection, $dbName)) {
+        $query = "CREATE TABLE usertable (
+        Id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        Address VARCHAR(100),
+        Email VARCHAR(100),
+        Image VARCHAR(100),
+        Address VARCHAR(100),
+        IpAddress VARCHAR(100),
+        Mobile VARCHAR(100),
+        Password (VARCHAR(100),
+        Username (VARCHAR(100)
+        )";
 
         if (!mysqli_query($connection, $query))
             echo ("<p>Error creating table.</p>");
