@@ -35,7 +35,9 @@ function VerifyBrandTable($connection, $dbName)
     if (!TableExists("brand", $connection, $dbName)) {
         $query = "CREATE TABLE brand (
 Id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-Name VARCHAR(100)
+Name VARCHAR(100),
+Address VARCHAR(100),
+Type VARCHAR(100)
 )";
 
         if (!mysqli_query($connection, $query))
@@ -47,15 +49,15 @@ function VerifyUserTable($connection, $dbName)
 {
     if (!TableExists("usertable", $connection, $dbName)) {
         $query = "CREATE TABLE usertable 
-(Address VARCHAR(100),
+(Id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Address VARCHAR(100),
 Email VARCHAR(100),
-Id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 Image VARCHAR(100),
 Address VARCHAR(100),
 IpAddress VARCHAR(100),
 Mobile VARCHAR(100),
-Password (VARCHAR(100),
-Username (VARCHAR(100)
+Password VARCHAR(100),
+Username VARCHAR(100)
 )";
 
         if (!mysqli_query($connection, $query))
