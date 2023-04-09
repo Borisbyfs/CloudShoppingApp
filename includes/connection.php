@@ -20,18 +20,18 @@ VerifyUserTable($connection, DB_DATABASE);
 
 function ClearAllTables($connection, $dbName)
 {
-    $query = "DROP TABLE (category)";
+    $query = "DROP TABLE category";
     if (!mysqli_query($connection, $query))
         echo ("<p>Error dropping category table.</p>");
 
 
 
-    $query = "DROP TABLE (brand)";
+    $query = "DROP TABLE brand";
     if (!mysqli_query($connection, $query))
         echo ("<p>Error dropping brand table.</p>");
 
 
-    $query = "DROP TABLE (user)";
+    $query = "DROP TABLE user";
     if (!mysqli_query($connection, $query))
         echo ("<p>Error dropping user table.</p>");
 
