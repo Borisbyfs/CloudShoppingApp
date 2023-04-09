@@ -50,14 +50,13 @@ function VerifyUserTable($connection, $dbName)
     if (!TableExists("usertable", $connection, $dbName)) {
         $query = "CREATE TABLE usertable (
             Id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            Address VARCHAR(100),
-            Email VARCHAR(100),
-            Image VARCHAR(100),
-            Address VARCHAR(100),
-            IpAddress VARCHAR(100),
-            Mobile VARCHAR(100),
-            Password VARCHAR(100),
             Username VARCHAR(100)
+            Email VARCHAR(100),
+            Password VARCHAR(100),
+            Image VARCHAR(100),
+            IpAddress VARCHAR(100),
+            Address VARCHAR(100),
+            Mobile VARCHAR(100),
 )";
 
         if (!mysqli_query($connection, $query))
@@ -76,8 +75,9 @@ function TableExists($tableName, $connection, $dbName)
         "SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_NAME = '$t' AND TABLE_SCHEMA = '$d'"
     );
 
-    if (mysqli_num_rows($checktable) > 0)
+    if (mysqli_num_rows($checktable) > 0) {
         return true;
+    }
 
     return false;
 }
