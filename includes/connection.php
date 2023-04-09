@@ -3,12 +3,13 @@
 <?php
 
 $connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);
+
 if (!$connection) {
     die(mysqli_error($connection));
 }
 
 $database = mysqli_select_db($connection, DB_DATABASE);
-
+ClearAllTables($connection, DB_DATABASE);
 VerifyCategoryTable($connection, DB_DATABASE);
 VerifyBrandTable($connection, DB_DATABASE);
 VerifyUserTable($connection, DB_DATABASE);
@@ -16,6 +17,25 @@ VerifyUserTable($connection, DB_DATABASE);
 ?>
 
 <?php
+
+function ClearAllTables($connection, $dbName)
+{
+    $query = "DROP TABLE (category)";
+    if (!mysqli_query($connection, $query))
+        echo ("<p>Error dropping category table.</p>");
+
+
+
+    $query = "DROP TABLE (brand)";
+    if (!mysqli_query($connection, $query))
+        echo ("<p>Error dropping brand table.</p>");
+
+
+    $query = "DROP TABLE (user)";
+    if (!mysqli_query($connection, $query))
+        echo ("<p>Error dropping user table.</p>");
+
+}
 
 function VerifyCategoryTable($connection, $dbName)
 {
